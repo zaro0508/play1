@@ -36,5 +36,6 @@ script:
 - cat secretfile
 - printenv
 - source secretfile
+- git-crypt lock
 - printenv
 #- "./deploy_infra.sh"
