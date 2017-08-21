@@ -19,7 +19,7 @@ install:
 - sudo apt-get update -y
 - sudo apt-get install -y wget unzip build-essential libssl-dev 
 - pushd /tmp
-- curl -Lo git-crypt.zip https://github.com/AGWA/git-crypt/archive/master.zip
+- wget https://github.com/AGWA/git-crypt/archive/master.zip -O git-crypt.zip
 - unzip git-crypt.zip
 - cd git-crypt-master
 - make
