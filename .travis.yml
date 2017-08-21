@@ -1,0 +1,27 @@
+notifications:
+  email: false
+sudo: false
+language: python
+python: 3.4
+cache: pip
+env:
+  global:
+  - STACK_NAME=bridgepf-$TRAVIS_BRANCH
+  - DNS_HOSTNAME=$STACK_NAME
+  - DNS_DOMAIN=sagebridge.org
+before_install:
+- openssl aes-256-cbc -K $encrypted_d2f874fd9210_key -iv $encrypted_d2f874fd9210_iv
+  -in crypt-key.enc -out crypt-key -d
+#- mkdir ~/.aws
+#- echo -e "[default]\nregion=us-east-1" > ~/.aws/config
+#- echo -e "[default]\naws_access_key_id=$AwsKey\naws_secret_access_key=$AwsSecretKey" > ~/.aws/credentials
+install:
+#- pip install --upgrade awscli
+- cat secretfile
+- git unlock ./crypt-key
+- cat secretfile
+- printenv
+- source secretfile
+- printenv
+#script:
+#- "./deploy_infra.sh"
