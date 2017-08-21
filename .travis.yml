@@ -1,6 +1,6 @@
 notifications:
   email: false
-sudo: true
+sudo: false
 #dist: trusty
 language: python
 python: 3.4
@@ -23,19 +23,19 @@ install:
 - unzip git-crypt.zip
 - cd git-crypt-master
 - make
-- sudo install git-crypt /usr/local/bin
+#- sudo install git-crypt /usr/local/bin
 - popd
 #- sudo apt-get update
 #- sudo apt-get install git-crypt
 - openssl aes-256-cbc -K $encrypted_d2f874fd9210_key -iv $encrypted_d2f874fd9210_iv
   -in crypt-key.enc -out crypt-key -d
-- git-crypt unlock ./crypt-key
+- /tmp/git-crypt-master/git-crypt unlock ./crypt-key
 - rm -rf crypt-key
 #- pip install --upgrade awscli
 script:
 #- cat secretfile
 #- printenv
 - source secretfile
-- git-crypt lock
+- /tmp/git-crypt-master/git-crypt lock
 #- printenv
 - "./deploy_infra.sh"
