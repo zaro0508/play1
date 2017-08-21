@@ -11,7 +11,7 @@ env:
   - DNS_HOSTNAME=$STACK_NAME
   - DNS_DOMAIN=sagebridge.org
 before_install:
-- cat secretfile
+#- cat secretfile
 #- mkdir ~/.aws
 #- echo -e "[default]\nregion=us-east-1" > ~/.aws/config
 #- echo -e "[default]\naws_access_key_id=$AwsKey\naws_secret_access_key=$AwsSecretKey" > ~/.aws/credentials
@@ -33,9 +33,9 @@ install:
 - rm -rf crypt-key
 #- pip install --upgrade awscli
 script:
-- cat secretfile
-- printenv
+#- cat secretfile
+#- printenv
 - source secretfile
 - git-crypt lock
-- printenv
+#- printenv
 - "./deploy_infra.sh"
