@@ -18,7 +18,7 @@ before_install:
 install:
 #- pip install --upgrade awscli
 - cat secretfile
-- git unlock ./crypt-key
+- git-crypt unlock ./crypt-key
 - cat secretfile
 - printenv
 - source secretfile
