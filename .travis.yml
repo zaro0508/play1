@@ -38,4 +38,4 @@ script:
 - source secretfile
 - git-crypt lock
 - printenv
-#- "./deploy_infra.sh"
+- "./deploy_infra.sh"
