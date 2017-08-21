@@ -1,6 +1,6 @@
 notifications:
   email: false
-sudo: false
+sudo: true
 language: python
 python: 3.4
 cache: pip
@@ -9,14 +9,10 @@ env:
   - STACK_NAME=bridgepf-$TRAVIS_BRANCH
   - DNS_HOSTNAME=$STACK_NAME
   - DNS_DOMAIN=sagebridge.org
-addons:
-  apt:
-    packages:
-    - git-crypt
 before_install:
 - cat secretfile
-#- sudo apt-get update
-#- sudo apt-get install git-crypt
+- sudo apt-get update
+- sudo apt-get install git-crypt
 - openssl aes-256-cbc -K $encrypted_d2f874fd9210_key -iv $encrypted_d2f874fd9210_iv
   -in crypt-key.enc -out crypt-key -d
 - git-crypt unlock ./crypt-key
