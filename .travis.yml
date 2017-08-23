@@ -35,7 +35,7 @@ install:
 script:
 #- cat secretfile
 #- printenv
-- source secretfile
+- source secretfile > /dev/null 2>&1
 - /tmp/git-crypt-master/git-crypt lock
-#- printenv
+- printenv
 - "./deploy_infra.sh"
